@@ -19,6 +19,10 @@ resource "aws_instance" "devserver" {
               EOF
 
 
+  lifecycle {
+    create_before_destroy = true
+  }
+
   tags = merge(local.common_tags, {
     Name = "kode-devserver"
   })
